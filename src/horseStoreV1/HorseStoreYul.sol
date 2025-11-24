@@ -6,11 +6,19 @@ contract HorseStoreYul {
 
   // 0xcdfead2e
   function updateHorseNumber(uint256 newNumberOfHorses) external {
-    numberOfHorses = newNumberOfHorses;
+    // numberOfHorses = newNumberOfHorses;
+    assembly {
+      sstore(numberOfHorses.slot, newNumberOfHorses)
+    }
   }
 
   // 0xe026c017
   function readNumberOfHorses() external view returns (uint256) {
-    return numberOfHorses;
+    // return numberOfHorses;
+    assembly {
+      let horses := sload(numberOfHorses.slot)
+      mstore(0, horses)
+      return(0, 0x20)
+    }
   }
 }

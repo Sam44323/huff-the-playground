@@ -19,8 +19,8 @@
   jumpi                 // [function_selector] {if the above condition is true then stack is empty and we jump to the updateJump counter}
 
   0xe026c017            // [0xe026c017, function_selector]
-  eq                    // [true_if_selector_matches, function_selector]
-  readJump              // [readHorseNumber_program_counter, true_if_selector_matches, function_selector]
+  eq                    // [true_if_selector_matches]
+  readJump              // [readHorseNumber_program_counter, true_if_selector_matches]
   jumping               // {if the above condition is true then stack is empty and we jump to the readJump counter}
 
 

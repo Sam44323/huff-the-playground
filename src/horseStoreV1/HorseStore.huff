@@ -1,2 +1,9 @@
 // takes -> what it takes from the stack & returns -> what it gives to the stack
-#define macro MAIN() = takes(0) returns(0) {}
+
+// top[]bottom {stack}
+#define macro MAIN() = takes(0) returns(0) {
+  push0 0x00                  // [0]
+  calldataload                // [calldata]
+  push1 0xe0                  // [0xe0, calldata]
+  shr                         // [function_selector]
+}

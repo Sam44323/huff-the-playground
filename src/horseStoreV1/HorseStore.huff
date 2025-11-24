@@ -21,7 +21,7 @@
   0xe026c017            // [0xe026c017, function_selector]
   eq                    // [true_if_selector_matches]
   readJump              // [readHorseNumber_program_counter, true_if_selector_matches]
-  jumping               // {if the above condition is true then stack is empty and we jump to the readJump counter}
+  jumpi               // {if the above condition is true then stack is empty and we jump to the readJump counter}
 
 
   0x00 0x00 revert      // [revert if no function-selector matches]

@@ -1,5 +1,10 @@
 // takes -> what it takes from the stack & returns -> what it gives to the stack
 
+/*Interface*/
+
+#define function updateHorseNumber(uint256) nonpayable returns()
+#define function readNumberOfHorses() view returns(uint256)
+
 // top[]bottom {stack}
 #define macro MAIN() = takes(0) returns(0) {
 
@@ -13,12 +18,12 @@
   // jumping to the correct function based on the selector
 
   dup1                  // [function_selector, function_selector]
-  0xcdfead2e            // [0xcdfead2e, function_selector, function_selector]
+  __FUNC_SIG(updateHorseNumber)            // [0xcdfead2e, function_selector, function_selector]
   eq                    // [true_if_selector_matches, function_selector]
   updateJump            // [updateHorseNumber_program_counter, true_if_selector_matches, function_selector]
   jumpi                 // [function_selector] {if the above condition is true then stack is empty and we jump to the updateJump counter}
 
-  0xe026c017            // [0xe026c017, function_selector]
+  __FUNC_SIG(readNumberOfHorses)            // [0xe026c017, function_selector]
   eq                    // [true_if_selector_matches]
   readJump              // [readHorseNumber_program_counter, true_if_selector_matches]
   jumpi                 // {if the above condition is true then stack is empty and we jump to the readJump counter}

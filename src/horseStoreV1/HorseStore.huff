@@ -1,0 +1,3 @@
+// takes -> what it takes from the stack
+// returns -> what it gives to the stack
+#define macro main() = takes(0) returns(0) {}

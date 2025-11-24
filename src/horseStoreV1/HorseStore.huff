@@ -48,4 +48,10 @@
   stop
 }
 
-#define macro READ_NUMBER_OF_HORSES() = takes(0) returns(0){}
+#define macro READ_NUMBER_OF_HORSES() = takes(0) returns(0){
+  [NUMBER_OF_HORSES_STORAGE_SLOT] // [storage_slot]
+  sload                 // [number_of_horses]
+  0x00                // [0, number_of_horses]
+  mstore               // [] | Memory: [number_of_horses]
+  0x20 0x00 return     // [] | returns number_of_horses. {0x20 means 32-bytes}
+}

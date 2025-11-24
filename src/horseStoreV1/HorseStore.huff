@@ -24,6 +24,7 @@
   jumping               // {if the above condition is true then stack is empty and we jump to the readJump counter}
 
 
+  0x00 0x00 revert      // [revert if no function-selector matches]
 
   updateJump:
     SET_NUMBER_OF_HORSES()
